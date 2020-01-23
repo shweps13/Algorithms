@@ -5,20 +5,19 @@ import sys
 def rock_paper_scissors(n):
   add = ['rock', 'paper', 'scissors']
   result = []
-  if n == 0:
-    result = [[]]
-  if n == 1:
-    for i in range(0, 3):
-      result.append([add[i]])
-  if n > 1:
-    for i in range(0, 3**n):
-      result.append(add[2])
 
+  def rps_results_adder(n, play):
+    if n == 0:
+      return result.append(play)
+    for i in add:
+      rps_results_adder(n-1, play + [i])
+
+  rps_results_adder(n, [])
   print("Result is:", result)
-  pass 
+  return result
 
 
-rock_paper_scissors(1)
+# rock_paper_scissors(2)
 
 # if __name__ == "__main__":
 #   if len(sys.argv) > 1:
